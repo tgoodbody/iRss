@@ -4,7 +4,7 @@
 #'
 #' @param basedir Character String. Path to input files
 #' @param odir Character String. Path to output directory (Will be created if it doesnt exist)
-#' @param file_type Character String. File identifier (e.g. ".tif" / "avg.tif")
+#' @param in_file_type Character String. File identifier for input data (e.g. ".tif" / "avg.tif")
 #' @param idx Character String. String to append to output mosaics
 #' @param chunk_size Number of files per chunk (defaults to all)
 #' @param out_file_type Character String. Output file type e.g. ".tif" / ".bil" see
@@ -41,9 +41,10 @@
 #'
 #' mosaic_in_chunks(basedir = "F:/_2021_SSCALS/03_raster/dtm",
 #'                  odir = "F:/_2021_SSCALS/03_raster/dtm/mosaics",
-#'                  file_type = ".bil",
+#'                  in_file_type = ".bil",
 #'                  idx = "dtm",
-#'                  chunk_size = 1000)
+#'                  chunk_size = 1000,
+#'                  out_file_type = ".tif")
 #'
 #'
 #' }
@@ -52,7 +53,7 @@
 
 mosaic_in_chunks <- function(basedir,
                              odir,
-                             file_type,
+                             in_file_type,
                              idx = "",
                              chunk_size = NULL,
                              out_file_type = ".tif",
@@ -76,8 +77,8 @@ mosaic_in_chunks <- function(basedir,
     stop("basedir needs to be a character path")
   }
 
-  if(!is.character(file_type)){
-    stop("file_type needs to be a character string ")
+  if(!is.character(in_file_type)){
+    stop("in_file_type needs to be a character string ")
   }
 
   if(!is.character(idx)){
@@ -97,7 +98,7 @@ mosaic_in_chunks <- function(basedir,
   }
 
   #--- list all files in output directory
-  all <- list.files(path = basedir, pattern = glue::glue("{file_type}"), full.names = TRUE)
+  all <- list.files(path = basedir, pattern = glue::glue("{in_file_type}"), full.names = TRUE)
 
   #--- remove meta files from list ---#
   if(any(stringr::str_detect(all,'.tif'))){
