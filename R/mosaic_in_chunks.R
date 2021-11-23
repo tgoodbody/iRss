@@ -53,7 +53,7 @@
 mosaic_in_chunks <- function(basedir,
                              odir,
                              file_type,
-                             idx = NULL,
+                             idx = "",
                              chunk_size = NULL,
                              out_file_type = ".tif",
                              pixel_type = "32_BIT_FLOAT",
@@ -161,7 +161,7 @@ mosaic_function <- function(x,
   counter <<-  counter + 1
 
   if(is.null(chunk_size)){
-    out <- glue::glue("{idx}_{counter}{out_file_type}")
+    out <- glue::glue("{idx}_{out_file_type}")
   } else {
     out <- glue::glue("{idx}_{counter}{out_file_type}")
   }
