@@ -7,8 +7,8 @@
 mosaic_in_chunks(
   basedir,
   odir,
-  file_type,
-  idx = NULL,
+  in_file_type,
+  idx = "",
   chunk_size = NULL,
   out_file_type = ".tif",
   pixel_type = "32_BIT_FLOAT",
@@ -23,7 +23,7 @@ mosaic_in_chunks(
 
 \item{odir}{Character String. Path to output directory (Will be created if it doesnt exist)}
 
-\item{file_type}{Character String. File identifier (e.g. ".tif" / "avg.tif")}
+\item{in_file_type}{Character String. File identifier for input data (e.g. ".tif" / "avg.tif")}
 
 \item{idx}{Character String. String to append to output mosaics}
 
@@ -68,9 +68,10 @@ arcpy <- reticulate::import("arcpy")
 
 mosaic_in_chunks(basedir = "F:/_2021_SSCALS/03_raster/dtm",
                  odir = "F:/_2021_SSCALS/03_raster/dtm/mosaics",
-                 file_type = ".bil",
+                 in_file_type = ".bil",
                  idx = "dtm",
-                 chunk_size = 1000)
+                 chunk_size = 1000,
+                 out_file_type = ".tif")
 
 
 }
