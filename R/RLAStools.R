@@ -49,7 +49,7 @@ RLAStools <-  function(LAStoolsDir = "",
   #--- end time ---#
   t2 <- Sys.time()
 
-  #display total processing time
+  #--- display total processing time ---#
   difftime(t2, t1, units = "auto")
 
 }
