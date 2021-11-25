@@ -3,6 +3,8 @@
 
 # iRss
 
+<img src="man/Logo/iRsshex.jpg" width="25%" style="display: block; margin: auto 0 auto auto;" />
+
 The `iRss` package is being developed by the IRSS lab to provide useful
 functions members use to do their work.
 
