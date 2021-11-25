@@ -20,10 +20,10 @@ knitr::opts_chunk$set(
 
 The `iRss` package is being developed by the IRSS lab to provide useful functions
 members use to do their work.
-
 ```{r, fig.align = "right", out.width="25%", echo=FALSE}
 knitr::include_graphics("man/Logo/iRsshex.jpg")
 ```
+
 ## Installation
 
 You can install the development version of iRss like so:
