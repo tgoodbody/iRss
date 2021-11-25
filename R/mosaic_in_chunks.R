@@ -136,7 +136,7 @@ mosaic_in_chunks <- function(basedir,
 
   counter <<- 0
 
-  mapply(mosaic_function,
+  mapply(mosaic,
          x = lists,
          idx = idx,
          odir = odir,
@@ -149,7 +149,7 @@ mosaic_in_chunks <- function(basedir,
          chunk_size = chunk_size)
 }
 
-mosaic_function <- function(x,
+mosaic <- function(x,
                             idx,
                             odir,
                             out_file_type,
