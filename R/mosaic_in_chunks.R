@@ -7,8 +7,8 @@
 #' @param in_file_type Character String. File identifier for input data (e.g. ".tif" / "avg.tif")
 #' @param idx Character String. String to append to output mosaics
 #' @param chunk_size Number of files per chunk (defaults to all)
-#' @param out_file_type Character String. Output file type e.g. ".tif" / ".bil" see
-#' https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm
+#' @param out_file_type Character String. Output file type e.g. ".tif" (default) see
+#' \href{https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm}{MosaictoNewRaster}
 #' @param pixel_type default: \code{"32_BIT_FLOAT"} - see
 #' \href{https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm}{MosaictoNewRaster}
 #' @param cellsize default: \code{""} - see
@@ -62,8 +62,6 @@ mosaic_in_chunks <- function(basedir,
                              number_of_bands = 1,
                              mosaic_method = "MEAN",
                              mosaic_colormap_mode = "FIRST"){
-
-  arcpy <- counter <- NULL
 
   if(!is.character(basedir)){
     stop("basedir needs to be a character path")
@@ -136,7 +134,7 @@ mosaic_in_chunks <- function(basedir,
 
   counter <<- 0
 
-  mapply(mosaic,
+  mapply(mosaic_chunks,
          x = lists,
          idx = idx,
          odir = odir,
@@ -149,16 +147,17 @@ mosaic_in_chunks <- function(basedir,
          chunk_size = chunk_size)
 }
 
-mosaic <- function(x,
-                            idx,
-                            odir,
-                            out_file_type,
-                            pixel_type,
-                            cellsize,
-                            number_of_bands,
-                            mosaic_method,
-                            mosaic_colormap_mode,
-                            chunk_size){
+mosaic_chunks <- function(x,
+                          idx,
+                          odir,
+                          out_file_type,
+                          pixel_type,
+                          cellsize,
+                          number_of_bands,
+                          mosaic_method,
+                          mosaic_colormap_mode,
+                          chunk_size){
+
   counter <<-  counter + 1
 
   if(is.null(chunk_size)){
