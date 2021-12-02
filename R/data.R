@@ -1,0 +1,10 @@
+#' Example of gantt chart dataframe format
+#'
+#' @format A tibble with 41 rows and 4 variables
+#' \describe{
+#'    \item{label}{Label of groups for gantt chart, shown by colour in ggplot, can also be used to show progress rather than categories}
+#'    \item{name}{Name of the event}
+#'    \item{start.date}{Start date of the event, format: mm/dd/yyyy}
+#'    \item{end.date}{End date of the event, format: mm/dd/yyyy}
+#' }
+"gantt_example"
