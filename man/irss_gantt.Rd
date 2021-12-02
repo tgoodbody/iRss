@@ -4,15 +4,31 @@
 \alias{irss_gantt}
 \title{Generate Gantt Chart}
 \usage{
-irss_gantt(gantt_df, palette = ggplot2::scale_colour_discrete(), ...)
+irss_gantt(
+  gantt_df,
+  palette = ggplot2::scale_colour_discrete(),
+  transparent = FALSE,
+  ...
+)
 }
 \arguments{
 \item{gantt_df}{A dataframe useable by ggplot; see \code{\link[iRss]{gantt_example}} for format}
 
 \item{palette}{a color palette function to be used to colour the plot}
 
-\item{...}{ggplot theme options and geom line options, used to make transparent background or other minor edits}
+\item{transparent}{makes the background transparent, need to save it to properly visualize}
+
+\item{...}{ggplot theme options}
 }
 \description{
 Generate Gantt Chart
+}
+\examples{
+# change palette
+irss_gantt(gantt_df = gantt_example, palette = scico::scale_colour_scico_d(palette = "batlow"))
+
+# make background transparent
+irss_gantt(gantt_df = gantt_example, transparent = TRUE)
+
+
 }
