@@ -18,6 +18,18 @@
 
 irss_gantt <- function(gantt_df, palette = ggplot2::scale_colour_discrete(), transparent = FALSE, ...) {
 
+  if(is.null(colnames(gantt_df))) {
+    stop("Please use a dataframe with the columns: label, name, start.date, end.date as the input for gantt_df")
+  }
+
+  if(sum(colnames(gantt_example) %in% c("label", "name", "start.date", "end.date")) != 4) {
+    stop("Missing the correct column names. label, name, start.date, end.date are required column names")
+  }
+
+  if(!("ScaleDiscrete" %in% class(palette))) {
+    stop("Palette is not a discrete colour palette")
+  }
+
   df <- gantt_df %>%
     dplyr::mutate(dplyr::across(dplyr::ends_with("date"), lubridate::mdy)) %>%
     dplyr::arrange(start.date, as.Date(start.date)) %>%
