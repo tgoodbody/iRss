@@ -29,8 +29,8 @@ mosaic_in_chunks(
 
 \item{chunk_size}{Number of files per chunk (defaults to all)}
 
-\item{out_file_type}{Character String. Output file type e.g. ".tif" / ".bil" see
-https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm}
+\item{out_file_type}{Character String. Output file type e.g. ".tif" (default) see
+\href{https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm}{MosaictoNewRaster}}
 
 \item{pixel_type}{default: \code{"32_BIT_FLOAT"} - see
 \href{https://desktop.arcgis.com/en/arcmap/10.3/tools/data-management-toolbox/mosaic-to-new-raster.htm}{MosaictoNewRaster}}

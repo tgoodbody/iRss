@@ -41,4 +41,18 @@ RLAStools(LAStool = "lasinfo",
           arguments = glue::glue("-v -odix _info -otxt -odir {outDir}"))
 }
 
+#--- batch ---#
+
+dirs <- list.dirs("F:/lidar_folders", recursive = FALSE)
+
+for(i in 1:length(dirs)){
+
+  odir <- glue::glue("{dirs[i]}/laz")
+
+  dir.create(odir)
+
+  iRss::RLAStools(LAStool = "las2las", input = glue("{dirs[i]}/*.laz"), arguments = glue::glue("-odir {odir} -olaz -cores 8") )
+
+}
+
 }
